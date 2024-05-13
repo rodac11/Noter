@@ -18,7 +18,7 @@ public class noter {
         }
 
         else { if(targetFileName == null) {
-                  targetFileName = "noter.txt";}}
+                  targetFileName = "notes.org";}}
         setBullet();
 
         try {
@@ -34,7 +34,7 @@ public class noter {
     }
 
     public static void setBullet(){
-        System.out.println(i);
+        int i = targetFileName.lastIndexOf('.');
         String fileType = targetFileName.substring(i + 1);
 
         switch(fileType) {
@@ -42,11 +42,19 @@ public class noter {
                 bullet = "- ";
                 return;
             case "org":
-                bullet = "* TODO: ";
+                bullet = "* TODO ";
                 return;
             case "md":
                 bullet = "- [  ] ";
                 return;
+            case "java":
+                bullet = "// TODO ";
+                return;
+            case "py":
+                bullet = "# TODO ";
+                return;
+            case "js":
+                bullet = "// TODO ";
         }
 
         if (i == -1 ){
@@ -69,3 +77,9 @@ public class noter {
         myWriter.close();
     }
     }
+// TODO Add comment prefixes for programming languages
+// TODO Add timestamp option?
+// TODO Add option to set working directory
+// TODO Add option to set/reset default target file
+// TODO experiment with having multiple directories
+// TODO Experiment with specifying where to place new notes
