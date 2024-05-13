@@ -17,7 +17,8 @@ public class noter {
             targetFileName = args[0];
         }
 
-        else {targetFileName = "noter.txt";}
+        else { if(targetFileName == null) {
+                  targetFileName = "noter.txt";}}
         setBullet();
 
         try {
@@ -33,7 +34,6 @@ public class noter {
     }
 
     public static void setBullet(){
-        int i = targetFileName.lastIndexOf('.');
         System.out.println(i);
         String fileType = targetFileName.substring(i + 1);
 
