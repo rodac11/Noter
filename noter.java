@@ -9,8 +9,12 @@ public class noter {
     private static FileWriter myWriter;
     private static String bullet;
     private static String targetFileName;
-    //INSERT YOUR DESIRED FILE HERE
-    //private static String targetFileName = "targetfile.type"
+    private static boolean overrideBullets = false;
+
+
+    // SET DEFAULT TARGET OR BULLET
+    // private static String targetFileName = "TARGETFILE.TYPE";
+    // private static String bullet = "BULLET ";
 
     public static void main(String[] args) throws IOException {
         if (args.length == 1) {
@@ -18,8 +22,12 @@ public class noter {
         }
 
         else { if(targetFileName == null) {
-                  targetFileName = "notes.org";}}
+                  targetFileName = "notes.txt";}
+        }
+
+        if (bullet == null) {
         setBullet();
+        }
 
         try {
         myScanner = new Scanner(System.in);
@@ -36,7 +44,9 @@ public class noter {
     public static void setBullet(){
         int i = targetFileName.lastIndexOf('.');
         String fileType = targetFileName.substring(i + 1);
-
+        if (bullet != null && overrideBullets){
+            return;
+            }
         switch(fileType) {
             case "txt":
                 bullet = "- ";
@@ -56,14 +66,14 @@ public class noter {
             case "js":
                 bullet = "// TODO ";
         }
-
         if (i == -1 ){
         System.out.println(
         "WARNING: submitted argument does not have file type." +
         "Defaulting to txt.");
         targetFileName = targetFileName.concat(".txt");
+        bullet = "- ";
+        return;
         }
-
     }
 
     public static void prompt() throws IOException{
@@ -73,13 +83,17 @@ public class noter {
             System.out.println("Too long a note!");
             note = myScanner.nextLine();
         }
-        myWriter.write(bullet + note + "\n");
+        if (note == "\r"){System.out.println("No note taken.");}
+        else {myWriter.write(bullet + note + "\n");}
         myWriter.close();
+        myScanner.close();
     }
     }
+// Upcoming features/experiments:
 // TODO Add comment prefixes for programming languages
 // TODO Add timestamp option?
 // TODO Add option to set working directory
 // TODO Add option to set/reset default target file
 // TODO experiment with having multiple directories
 // TODO Experiment with specifying where to place new notes
+// TODO Do some testing
