@@ -10,7 +10,7 @@ More importantly, This tool couples well with the rest of my workflow because of
 ## Setting it up
 You can specify a specific file as an argument of the program, or assign one through the **targetFileName** variable. This way, you don't have to constantly specify a single file if you usually default to it, but you always have the option to 
 
-All messages are prefixed by a *bullet* which, depending on certain filetypes, will ensure the added notes are formatted correctly. For example:
+All messages are prefixed by a **bullet** which, depending on certain filetypes, will ensure the added notes are formatted correctly. For example:
 * The bullet "* TODO " is added on files of type .org an Emacs notekeeping mode
 * The bullet "// TODO " is added on files of type .java, to correctly mark them as comments on java files.
 
@@ -37,6 +37,9 @@ I.e. being able to decide where in the file a new note is added. The most basic 
 ### Multiple saved targetFileNames
 I.e. having more than one default destination for notes, specified either by an argument when starting the program or as a prompt after writing the note.
 
+### Get/review notes (randomly?)
+I would have implemented this earlier but calling **cat** on my terminal does the easily enough, so I didn't bother. A way to make it a fun feature would be to display a random note/task. I've used dice rolls to choose which task in my to-do list I'll get to first, so this feels slightly more worthwhile than a re-do of **cat**.y, C, o
+
 ### Setup commands
 I.e. being able to run Noter and specifying targetFileNames, bullets, etc. instead of having to rewrite a java file and recompile.
 
@@ -44,7 +47,7 @@ I.e. being able to run Noter and specifying targetFileNames, bullets, etc. inste
 I.e. moving out of a terminal and into a window of its own. This **does** turn it into a program/system more than anything else, but it would also be a lot less of a hassle for a lot of cases.
 
 ### Refactoring
-I.e. rewriting Noter on elisp (for use on the Emacs command region), or just plain C
+I.e. rewriting Noter on elisp (for use on the Emacs command region), or just plain C.
 
 ## Contact
 I'm open to any suggestions or pull requests!
